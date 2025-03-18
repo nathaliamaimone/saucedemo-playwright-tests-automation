@@ -1,9 +1,7 @@
 import { expect, test as setup } from '@playwright/test';
 import { STORAGE_STATE } from '../playwright.config';
-import { LoginPage } from '../pages/LoginPage';
 
 setup('Perform Login Action', async ({ page }) => {
-
   console.log('Execução da configuração global.');
 
   await page.goto('https://www.saucedemo.com/');
