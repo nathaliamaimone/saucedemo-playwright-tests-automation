@@ -3,15 +3,11 @@ import { LoginPage } from '../pages/LoginPage';
 import { InventoryPage } from '../pages/InventoryPage';
 
 test.describe('Inventory Tests', () => {
-    let loginPage;
     let inventoryPage;
   
     test.beforeEach(async ({ page }) => {
-      loginPage = new LoginPage(page);
-      inventoryPage = new InventoryPage(page);
-      
-      await loginPage.goto();
-      await loginPage.login('standard_user', 'secret_sauce');
+        inventoryPage = new InventoryPage(page);
+      await page.goto('/inventory.html');
     });
   
     test('Add backpack to cart successfully', async () => {

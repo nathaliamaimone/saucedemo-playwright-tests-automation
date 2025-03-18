@@ -1,17 +1,27 @@
-// @ts-check
-import { defineConfig } from "@playwright/test";
+import { defineConfig, devices } from '@playwright/test';
+import path from 'path';
 
-/**
- * @see https://playwright.dev/docs/test-configuration
- */
+export const STORAGE_STATE = path.join(__dirname, 'playwright/.auth/login-data.json');
+
 export default defineConfig({
-  testDir: "./tests",
+  testDir: './tests',
   timeout: 30000,
   fullyParallel: true,
-  reporter: "html",
+  reporter: 'html',
   use: {
-    baseURL: "https://www.saucedemo.com",
-    screenshot: "only-on-failure",
-    video: "retain-on-failure",
+    baseURL: 'https://www.saucedemo.com',
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
   },
+  projects: [
+    {
+      name: 'setup',
+      testMatch: '**/*.setup.js',
+    },
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'], storageState: STORAGE_STATE },
+      dependencies: ['setup'],
+    }
+  ],
 });
