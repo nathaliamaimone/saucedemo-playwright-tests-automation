@@ -26,4 +26,9 @@ test.describe('Inventory Tests', () => {
         expect(await inventoryPage.getCartCount()).toBe(0);
       });
 
+      test('Sort products by price low to high', async () => {
+        await inventoryPage.sortProducts('lohi');
+        expect(await inventoryPage.arePricesSortedLowToHigh()).toBe(true); 
+      });
+
 });
