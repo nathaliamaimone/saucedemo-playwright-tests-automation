@@ -38,16 +38,22 @@ export class InventoryPage {
         return firstFivePrices;
       }
       
-      async pricesSortedLowToHigh() {
+      async pricesSorted(order = 'lowToHigh') {
         const firstFivePrices = await this.getFirstFiveProductPrices();
-
+      
         const isSorted = firstFivePrices.every((price, index) => {
-            if (index === 0) return true;
-            // Comparando se o preço atual é maior ou igual ao preço anterior
+          if (index === 0) return true; 
+      
+          if (order === 'lowToHigh') {
             const isGreaterOrEqual = price >= firstFivePrices[index - 1];
-            console.log(`Comparando: ${firstFivePrices[index - 1]} <= ${price} => ${isGreaterOrEqual}`);
+            console.log(`Comparando (crescente): ${firstFivePrices[index - 1]} <= ${price} => ${isGreaterOrEqual}`);
             return isGreaterOrEqual;
-          });
-          return isSorted;
+          } else if (order === 'highToLow') {
+            const isLessOrEqual = price <= firstFivePrices[index - 1];
+            console.log(`Comparando (decrescente): ${firstFivePrices[index - 1]} >= ${price} => ${isLessOrEqual}`);
+            return isLessOrEqual;
+          }
+        });
+        return isSorted;
       }
   }

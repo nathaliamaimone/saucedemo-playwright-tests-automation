@@ -28,7 +28,11 @@ test.describe('Inventory Tests', () => {
 
       test('Sort products by price low to high', async () => {
         await inventoryPage.sortProducts('lohi');
-        expect(await inventoryPage.arePricesSortedLowToHigh()).toBe(true); 
+        expect(await inventoryPage.pricesSorted('lowToHigh')).toBe(true);
       });
-
+    
+      test('Sort products by price high to low', async () => {
+        await inventoryPage.sortProducts('hilo');
+        expect(await inventoryPage.pricesSorted('highToLow')).toBe(true);
+      });
 });
