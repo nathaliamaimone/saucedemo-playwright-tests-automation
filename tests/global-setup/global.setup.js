@@ -1,5 +1,5 @@
 import { expect, test as setup } from '@playwright/test';
-import { STORAGE_STATE } from '../playwright.config';
+import { STORAGE_STATE } from '../../playwright.config';
 
 setup('Perform Login Action', async ({ page }) => {
   console.log('Execução da configuração global.');
