@@ -20,4 +20,14 @@ test.describe('Cart Tests', () => {
         const isItemInCart = await cartPage.isItemInCart('Sauce Labs Backpack');
         expect(isItemInCart).toBe(true);
     });
+
+    test('Remove item from cart successfully', async ({ page }) => {
+        await inventoryPage.addItemToCart(inventoryPage.backpackItemAdd);
+        expect(await inventoryPage.getCartCount()).toBe(1);
+        await inventoryPage.cartIcon.click();
+        await expect(page).toHaveURL(/.*cart.html/);
+        await cartPage.removeBackpackFromCart();
+        const isItemInCart = await cartPage.isItemInCart('Sauce Labs Backpack');
+        expect(isItemInCart).toBe(false);
+    });
 });

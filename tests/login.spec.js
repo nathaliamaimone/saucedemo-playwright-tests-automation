@@ -20,6 +20,6 @@ test.describe('Login Tests', () => {
         await loginPage.login('invalid_user', 'invalid_password');
         const errorMessage = await loginPage.getErrorMessage();
         expect(errorMessage).toContain('Username and password do not match');
-      });
+    });
 
 });
