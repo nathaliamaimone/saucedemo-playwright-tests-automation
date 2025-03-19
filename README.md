@@ -38,3 +38,38 @@ Este projeto é uma suite de testes automatizados para a aplicação web **Swag 
    ```bash
    npx playwright test tests/inventory.spec.js
 
+### Executar os Testes e Visualizar o Relatório
+
+ - De forma manual:
+
+   ```bash
+   npm run report
+
+ - Executar testes e abrir o relatório:
+
+   ```bash
+   npm run test:with-report
+
+
+### Estrutura do Projeto 
+
+```bash
+sauce-demo-playwright-tests-automation/
+├── node_modules/
+├── ortoni-report/                
+├── pages/                         
+│   ├── LoginPage.js               
+│   ├── InventoryPage.js           
+│   ├── CartPage.js                
+│   └── CheckoutPage.js            
+├── tests/
+│   ├── global-setup/
+│       ├── global.setup.js                   
+│   ├── login.spec.js              
+│   ├── inventory.spec.js          
+│   ├── cart.spec.js               
+│   └── checkout.spec.js      
+├── package.json               
+├── package-lock.json    
+├── playwright.config.ts
+└── README.md                      
