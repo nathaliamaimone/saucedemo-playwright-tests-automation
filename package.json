@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "playwright test"
+    "test": "playwright test",
+    "report": "start ortoni-report/ortoni-report.html",
+    "test:with-report": "npm run test && npm run report"
   },
   "keywords": [],
   "author": "",
@@ -12,5 +14,8 @@
   "devDependencies": {
     "@playwright/test": "^1.51.1",
     "@types/node": "^22.13.10"
+  },
+  "dependencies": {
+    "ortoni-report": "^3.0.0"
   }
 }

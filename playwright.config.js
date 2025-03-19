@@ -7,10 +7,15 @@ export default defineConfig({
   testDir: './tests',
   timeout: 30000,
   fullyParallel: true,
-  reporter: 'html',
+  reporter: [
+    ['html'], ["ortoni-report", {
+      projectName: "saucedemo-playwright-tests-automation",
+      authorName: "Nathalia Maimone",
+    }]
+  ],
   use: {
     baseURL: 'https://www.saucedemo.com',
-    screenshot: 'only-on-failure',
+    screenshot: 'on',
     video: 'retain-on-failure',
   },
   projects: [
