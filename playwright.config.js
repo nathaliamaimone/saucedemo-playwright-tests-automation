@@ -7,6 +7,7 @@ export default defineConfig({
   testDir: './tests',
   timeout: 30000,
   fullyParallel: true,
+  globalSetup: require.resolve('./utils/global.setup.js'),
   reporter: [
     ['html'], ["ortoni-report", {
       projectName: "saucedemo-playwright-tests-automation",
@@ -20,13 +21,8 @@ export default defineConfig({
   },
   projects: [
     {
-      name: 'setup',
-      testMatch: '**/*/*.setup.js',
-    },
-    {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'], storageState: STORAGE_STATE },
-      dependencies: ['setup'],
     }
   ],
 });
