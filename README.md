@@ -11,7 +11,7 @@ Este projeto é uma suite de testes automatizados para a aplicação web **Swag 
 
 ### Instalação
 
-1. Clone o repositório:
+1. Clonar o repositório:
 
    ```bash
    git clone https://github.com/seu-usuario/sauce-demo-playwright-tests-automation.git
@@ -21,10 +21,15 @@ Este projeto é uma suite de testes automatizados para a aplicação web **Swag 
    ```bash
    cd sauce-demo-playwright-tests-automation
    
-3. Instale as dependências:
+3. Instalar as dependências:
 
    ```bash
    npm install
+
+4. Instalar binários do navegador:
+
+   ```bash
+   npx playwright install
 
 ### Executando os Testes
 
@@ -55,21 +60,22 @@ Este projeto é uma suite de testes automatizados para a aplicação web **Swag 
 
 ```bash
 sauce-demo-playwright-tests-automation/
-├── node_modules/
-├── ortoni-report/                
-├── pages/                         
-│   ├── LoginPage.js               
-│   ├── InventoryPage.js           
-│   ├── CartPage.js                
-│   └── CheckoutPage.js            
+├── pages/                         # Classes de Page Objects
+│   ├── LoginPage.js               # Página de login
+│   ├── InventoryPage.js           # Página de inventário (produtos)
+│   ├── CartPage.js                # Página do carrinho
+│   └── CheckoutPage.js            # Página de checkout
 ├── tests/
-│   ├── global-setup/
-│       ├── global.setup.js                   
-│   ├── login.spec.js              
-│   ├── inventory.spec.js          
-│   ├── cart.spec.js               
-│   └── checkout.spec.js      
-├── package.json               
-├── package-lock.json    
-├── playwright.config.ts
-└── README.md                      
+│   ├── login.spec.js              # Testes de login
+│   ├── inventory.spec.js          # Testes de inventário (produtos)
+│   ├── cart.spec.js               # Testes do carrinho
+│   └── checkout.spec.js           # Testes de checkout
+├── ortoni-report/                 
+│   └── ortoni-report.html         # Relatório HTML
+├── utils/
+│   └── global.setup.js            # Arquivo de setup global
+├── .gitignore                     # Arquivos e pastas ignorados pelo Git
+├── package.json                   # Dependências e scripts do projeto
+├── package-lock.json              # Versões exatas das dependências
+├── playwright.config.ts           # Configurações do Playwright
+└── README.md                      # Documentação do projeto                   
