@@ -2,15 +2,17 @@ export class InventoryPage {
     constructor(page) {
         this.page = page;
         this.backpackItemAdd = page.locator('[data-test="add-to-cart-sauce-labs-backpack"]');
+        this.bikeLightItemAdd = page.locator('[data-test="add-to-cart-sauce-labs-bike-light"]');
         this.backpackItemRemove = page.locator('[data-test="remove-sauce-labs-backpack"]');
         this.cartBadge = page.locator('.shopping_cart_badge');
         this.sortDropdown = page.locator('[data-test="product-sort-container"]')
         this.productPrices = page.locator('[data-test="inventory-item-price"]')
+        this.cartIcon = page.locator('[data-test="shopping-cart-link"]');
     }
   
-    async addItemToCart() {
-        await this.backpackItemAdd.click();
-    }
+    async addItemToCart(itemLocator) {
+      await itemLocator.click();
+  }
   
     async getCartCount() {
         if (await this.cartBadge.isVisible()) {
@@ -30,15 +32,15 @@ export class InventoryPage {
         await this.sortDropdown.selectOption(option);
       }
 
-      async getFirstFiveProductPrices() {
+    async getFirstFiveProductPrices() {
         const prices = await this.productPrices.allTextContents();
         const numericPrices = prices.map(price => parseFloat(price.replace('$', '')));
         const firstFivePrices = numericPrices.slice(0, 5);
         console.log('5 primeiros preços (números):', firstFivePrices);
         return firstFivePrices;
-      }
+    }
       
-      async pricesSorted(order = 'lowToHigh') {
+    async pricesSorted(order = 'lowToHigh') {
         const firstFivePrices = await this.getFirstFiveProductPrices();
       
         const isSorted = firstFivePrices.every((price, index) => {
@@ -55,5 +57,5 @@ export class InventoryPage {
           }
         });
         return isSorted;
-      }
+    }
   }
